@@ -92,16 +92,29 @@ exports.topitems = function(req, res){
 };
 
 exports.additem = function(req, res){
-    var query = 'INSERT INTO wishlist () VALUES ';
-    res.status(204);
-    runQuery(query, res, function(res, result){
+    runQuery("SELECT MAX(id) AS id_max FROM whishlist", res, function(res, result) {
         console.log(JSON.stringify(result));
-        res.send();
+        var query = 'INSERT INTO wishlist (id, item, link, price, time_added) VALUES (';
+        query += parseInt(result[0].id_max + 1) + ", ";
+        query += "'" + Client.escape(req.body.item) + "', ";
+        query += "'" + Client.escape(req.body.link) + "', ";
+        query += req.body.price + ", ";
+        query += "NOW());"
+        res.status(204);
+        runQuery(query, res, function (res, result) {
+            console.log(JSON.stringify(result));
+            res.send();
+        });
     });
 };
 
 exports.modifyitem = function(req, res){
-    var query = 'UPDATE';
+    var query = 'UPDATE wishlist SET ';
+    query += "item='" + Client.escape(req.body.item) + "',";
+    query += "link='" + Client.escape(req.body.link) + "',";
+    query += "price=" +req.body.price + ",";
+    query += "time_added=NOW()";
+    query += " WHERE id = " + parseInt(req.body.id); + ";"
     res.status(204);
     runQuery(query, res, function(res, result){
         console.log(JSON.stringify(result));

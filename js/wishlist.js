@@ -72,27 +72,37 @@ function requestJSON(query, res){
 }
 
 
-function requestTable(query , res){
+function requestHTML(query , res){
     console.log(query);
     runQuery(query, res,  function (res, result){
         console.log(JSON.stringify(result));
         //res.set('Content-Type', 'application/json');
-        //res.render('tabletest', {data: result, headers: []});
+        res.render('topitems', {data: result});
     });
 }
 
 exports.pricedata = function(req, res){
-
+    requestJSON('SELECT * FROM wishlist;', res);
 };
 
 exports.topitems = function(req, res){
-
+    requestHTML('SELECT item, COUNT(item) AS item_count FROM wishlist GROUP BY item ORDER BY item_count DEC;', res);
 };
 
 exports.additem = function(req, res){
-
+    var query = 'INSERT INTO wishlist () VALUES ';
+    res.status(204);
+    runQuery(query, res, function(res, result){
+        console.log(JSON.stringify(result));
+        res.send();
+    });
 };
 
 exports.modifyitem = function(req, res){
-
+    var query = 'UPDATE';
+    res.status(204);
+    runQuery(query, res, function(res, result){
+        console.log(JSON.stringify(result));
+        res.send();
+    });
 };

@@ -82,7 +82,9 @@ function requestHTML(query , res){
 }
 
 exports.pricedata = function(req, res){
-    requestJSON('SELECT * FROM wishlist;', res);
+    requestJSON('SELECT item, COUNT(item) AS item_count, DATE(time_added) AS date_added, ' +
+    'AVERAGE(price) AS price_avg FROM wishlist ' +
+    'GROUP BY item, date_added, ORDER BY date_added DEC;', res);
 };
 
 exports.topitems = function(req, res){

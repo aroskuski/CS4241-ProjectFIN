@@ -114,7 +114,7 @@ exports.modifyitem = function(req, res){
     query += "link='" + Client.escape(req.body.link) + "',";
     query += "price=" +req.body.price + ",";
     query += "time_added=NOW()";
-    query += " WHERE id = " + parseInt(req.body.id); + ";"
+    query += " WHERE id = " + parseInt(req.body.id) + ";";
     res.status(204);
     runQuery(query, res, function(res, result){
         console.log(JSON.stringify(result));

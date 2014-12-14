@@ -4,7 +4,8 @@ var wishlist = require('../js/wishlist.js');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  //res.render('index', { title: 'Express' });
+  res.redirect(301, 'wishlist.html');
 });
 
 router.get('/wishlist.html', function(req, res){

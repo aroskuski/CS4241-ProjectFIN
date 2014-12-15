@@ -18,12 +18,29 @@ body {
   border-bottom-left-radius: 8px;
   -webkit-box-shadow: rgb(102, 102, 102) 0px 2px 3px;
   box-shadow: rgb(102, 102, 102) 0px 2px 3px;
-  background: linear-gradient(rgba(204, 22, 28, 0.95), rgb(14, 101, 19));
+  background: linear-gradient(rgba(30, 149, 204, 0.95), rgb(0, 183, 255));
   margin-top: 5%;
-  width: 45%;
-  height: 80%;
+  width: 60%;
+  height: 100%;
   position:relative;
   float: left;
+}
+.div3{
+  padding: 60px 0px;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -webkit-box-shadow: rgb(102, 102, 102) 0px 2px 3px;
+  box-shadow: rgb(102, 102, 102) 0px 2px 3px;
+  background: linear-gradient(rgba(30, 149, 204, 0.95), rgb(0, 183, 255));
+  margin-top: 5%;
+  margin-left: 1%;
+  width: 38%;
+  height: 100%;
+  position:relative;
+  float: right;
 }
 a {
   color: #00B7FF;

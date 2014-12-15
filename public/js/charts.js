@@ -6,25 +6,35 @@
 $(function () {
     $('#container').highcharts({
         chart: {
-            type: 'bar'
+            type: 'line'
         },
         title: {
-            text: 'Fruit Consumption'
+            text: 'Price Change on Top Items'
         },
         xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
+            categories: ['Last Month', 'This Month', 'Today']
         },
         yAxis: {
             title: {
-                text: 'Fruit eaten'
+                text: 'Price $'
             }
         },
         series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
+            name: 'Item 1',
+            data: [24.99, 24.99, 15.99]
         }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
+            name: 'Item 2',
+            data: [49.99, 49.99, 49.99]
+        }, {
+            name: 'Item 3',
+            data: [40.00, 49.99, 37.50]
+        }, {
+            name: 'Item 4',
+            data: [10.99, 10.99, 10.99]
+        }, {
+            name: 'Item 5',
+            data: [5.99, 19.99, 7.50]
+        }
+        ]
     });
 });

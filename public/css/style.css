@@ -18,7 +18,7 @@ body {
   border-bottom-left-radius: 8px;
   -webkit-box-shadow: rgb(102, 102, 102) 0px 2px 3px;
   box-shadow: rgb(102, 102, 102) 0px 2px 3px;
-  background: linear-gradient(rgba(30, 149, 204, 0.95), rgb(0, 183, 255));
+  background: linear-gradient(rgba(204, 137, 121, 0.95), rgb(255, 70, 69));
   margin-top: 5%;
   width: 60%;
   height: 100%;
@@ -34,7 +34,7 @@ body {
   border-bottom-left-radius: 8px;
   -webkit-box-shadow: rgb(102, 102, 102) 0px 2px 3px;
   box-shadow: rgb(102, 102, 102) 0px 2px 3px;
-  background: linear-gradient(rgba(30, 149, 204, 0.95), rgb(0, 183, 255));
+  background: linear-gradient(rgba(119, 204, 123, 0.95), rgb(5, 204, 18));
   margin-top: 5%;
   margin-left: 1%;
   width: 38%;
@@ -42,6 +42,35 @@ body {
   position:relative;
   float: right;
 }
+
+.ratingsdiv{
+  float: left;
+}
+
 a {
   color: #00B7FF;
+}
+
+/* unvisited link */
+a:link {
+  font-size: 18px;
+  color: #00ac15;
+}
+
+/* visited link */
+a:visited {
+  font-size: 18px;
+  color: #00ac15;
+}
+
+/* mouse over link */
+a:hover {
+  font-size: 18px;
+  color: #0027ac;
+}
+
+/* selected link */
+a:active {
+  font-size: 18px;
+  color: #ac009c;
 }

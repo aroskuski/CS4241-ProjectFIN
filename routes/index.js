@@ -13,10 +13,11 @@ router.get('/wishlist.html', function(req, res){
 });
 
 //takes no arguments, returns the json to put in the chart
-//returns array of format {item, item_count}
+//returns JSON array of format {item, item_count, date_added, price_avg}
 router.get('/pricedata.json', wishlist.pricedata);
 
 //takes no arguments, returns html fragment
+//sends an array of format {item, item_count} to the jade template
 router.get('/topitems.html', wishlist.topitems);
 
 //name, link, and price must be in body, returns wishlist item id

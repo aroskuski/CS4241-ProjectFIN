@@ -100,6 +100,10 @@ exports.topitems = function(req, res){
 };
 
 exports.additem = function(req, res){
+    if((req.body.item == undefined) || (req.body.link == undefined) || (req.body.price == undefined)){
+        res.status(400).send();
+        return;
+    }
     runQuery("SELECT MAX(id) AS id_max FROM whishlist", res, function(res, result) {
         console.log(JSON.stringify(result));
         var query = 'INSERT INTO wishlist (id, item, link, price, time_added) VALUES (';
@@ -107,7 +111,7 @@ exports.additem = function(req, res){
         query += "'" + Client.escape(req.body.item) + "', ";
         query += "'" + Client.escape(req.body.link) + "', ";
         query += req.body.price + ", ";
-        query += "NOW());"
+        query += "NOW());";
         res.status(204);
         runQuery(query, res, function (res, result) {
             console.log(JSON.stringify(result));
@@ -117,6 +121,10 @@ exports.additem = function(req, res){
 };
 
 exports.modifyitem = function(req, res){
+    if((req.body.id == undefined) || (req.body.item == undefined) || (req.body.link == undefined) || (req.body.price == undefined) ){
+        res.status(400).send();
+        return;
+    }
     var query = 'UPDATE wishlist SET ';
     query += "item='" + Client.escape(req.body.item) + "',";
     query += "link='" + Client.escape(req.body.link) + "',";

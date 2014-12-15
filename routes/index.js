@@ -13,6 +13,7 @@ router.get('/wishlist.html', function(req, res){
 });
 
 //takes no arguments, returns the json to put in the chart
+//returns array of format {item, item_count}
 router.get('/pricedata.json', wishlist.pricedata);
 
 //takes no arguments, returns html fragment

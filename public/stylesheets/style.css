@@ -9,7 +9,22 @@ body {
   background: url('../img/snowheader.png');
   background-size: 100% 100%;
 }
-
+.div2{
+  padding: 60px 0px;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -webkit-box-shadow: rgb(102, 102, 102) 0px 2px 3px;
+  box-shadow: rgb(102, 102, 102) 0px 2px 3px;
+  background: linear-gradient(rgba(204, 22, 28, 0.95), rgb(14, 101, 19));
+  margin-top: 5%;
+  width: 45%;
+  height: 80%;
+  position:relative;
+  float: left;
+}
 a {
   color: #00B7FF;
 }

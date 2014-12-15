@@ -77,7 +77,15 @@ function requestHTML(query , res){
     runQuery(query, res,  function (res, result){
         console.log(JSON.stringify(result));
         //res.set('Content-Type', 'application/json');
-        res.render('topitems', {data: result});
+        var topten = [];
+        for(var i = 0; i < 10; i++){
+            if (result[i] != undefined){
+                topten[i] = result[i];
+            }
+
+        }
+        console.log(JSON.stringify(topten));
+        res.render('topitems', {data: topten});
     });
 }
 

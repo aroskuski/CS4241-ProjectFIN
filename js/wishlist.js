@@ -107,15 +107,17 @@ exports.additem = function(req, res){
     runQuery("SELECT MAX(id) AS id_max FROM whishlist", res, function(res, result) {
         console.log(JSON.stringify(result));
         var query = 'INSERT INTO wishlist (id, item, link, price, time_added) VALUES (';
-        query += parseInt(result[0].id_max + 1) + ", ";
+        var id = parseInt(result[0].id_max + 1);
+        console.log("id=" + id);
+        query += id + ", ";
         query += "'" + Client.escape(req.body.item) + "', ";
         query += "'" + Client.escape(req.body.link) + "', ";
         query += req.body.price + ", ";
         query += "NOW());";
-        res.status(204);
+        res.status(200);
         runQuery(query, res, function (res, result) {
             console.log(JSON.stringify(result));
-            res.send();
+            res.send(id);
         });
     });
 };

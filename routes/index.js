@@ -17,7 +17,7 @@ router.get('/wishlist.html', function(req, res){
 router.get('/pricedata.json', wishlist.pricedata);
 
 //takes no arguments, returns html fragment
-//sends an array of format {item, item_count} to the jade template
+//sends an array of format {item,link,item_count} to the jade template
 router.get('/topitems.html', wishlist.topitems);
 
 //name, link, and price must be in body, returns wishlist item id

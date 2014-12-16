@@ -10,10 +10,16 @@ function onStart(){
 
 function printPage(){
     window.print();
+    addToDatabase();
 }
 
 function emailPage(){
     document.getElementById("emailDiv").style.visibility = 'visible';
+    addToDatabase();
+}
+
+function addToDatabase(){
+
 }
 
 window.addEventListener("load", onStart, false);

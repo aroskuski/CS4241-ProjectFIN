@@ -24,24 +24,50 @@ block content
             th Price
          tr
             td
-               input
+               input#item1Name
             td
-               input
+               input#item1Link
             td
                p $
-                  input
+                  input#item1Price
          tr
             td
-               input
+               input#item2Name
             td
-               input
+               input#item2Link
             td
-               input
+               p $
+                  input#item2Price
+         tr
+            td
+               input#item3Name
+            td
+               input#item3Link
+            td
+               p $
+                  input#item3Price
+         tr
+            td
+               input#item4Name
+            td
+               input#item4Link
+            td
+               p $
+                  input#item4Price
+         tr
+            td
+               input#item5Name
+            td
+               input#item5Link
+            td
+               p $
+                  input#item5Price
    div(class="div3")
       div(id="container" style="width:100%; height:312.5px;")
    div(class="div4")
-      button(id="print")(class="bigbuttons")(type="button") Print
-      button(id="email")(class="bigbuttons")(type="button") Email to Santa
+      form#sub(action='/newsletter', method='post')
+         input(id='print' class="bigbuttons" type='submit',value='Print',data-transition='fade')
+         input(id='email' class="bigbuttons" type='submit',value='Email to Santa',data-transition='fade')
       div(id="emailDiv")(class="hiddenDiv")
          form#sub(action='/wishlist', method='post')
             input(id='emailText', type='text',value='',placeholder='Write your letter to Santa here!')

@@ -29,13 +29,13 @@ $(document).ready(function(req, res) {
                     'from_email': 'zngoddard@wpi.edu',
                     'to': [
                         {
-                            'email': 'zngoddard@wpi.edu',//values['parentEmail'],
+                            'email': values['parentEmail'],
                             'type': 'to'
                         }
                     ],
                     'autotext': 'true',
                     'subject': 'Christmas Wishlist!',
-                    'html': $("#emailText").val()
+                    'html': $("#emailText").text()
                 }
             }
         });

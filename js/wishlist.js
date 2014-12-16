@@ -98,7 +98,7 @@ exports.pricedata = function(req, res){
 
 //Wrapper for requestHTML, that uses a prebuilt query to get the top items.
 exports.topitems = function(req, res){
-    requestHTML('SELECT item, COUNT(item) AS item_count FROM wishlist GROUP BY item ORDER BY item_count DESC;', res);
+    requestJSON('SELECT item, link, COUNT(item) AS item_count FROM wishlist GROUP BY item ORDER BY item_count DESC;', res);
 };
 
 // adds an item with the specified data to the db

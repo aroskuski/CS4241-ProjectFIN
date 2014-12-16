@@ -46,7 +46,8 @@ function submitToDatabase(i){
                 , type: 'POST'
                 , cache: false
                 , data: {item: name, link: link, price: price}
-                , success: function(){
+                , complete: function(data){
+                    console.log("made it here!!");
                     submitToDatabase(i+1);
                 }
             })

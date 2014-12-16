@@ -122,7 +122,7 @@ exports.additem = function(req, res){
         res.status(200);
         runQuery(query, res, function (res, result) {
             console.log(JSON.stringify(result));
-            res.send(id);
+            res.sendStatus(id);
         });
     });
 };

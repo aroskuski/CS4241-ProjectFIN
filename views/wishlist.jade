@@ -43,5 +43,9 @@ block content
       button(id="print")(class="bigbuttons")(type="button") Print
       button(id="email")(class="bigbuttons")(type="button") Email to Santa
       div(id="emailDiv")(class="hiddenDiv")
-         p Email to santa!
+         form#sub(action='/wishlist', method='post')
+            input(id='emailText', type='text',value='',placeholder='Write your letter to Santa here!')
+            input(id='parentEmail', type='text',value='',placeholder='Email')
+            input(id='submitButton', type='submit', value='Send!')
+
 

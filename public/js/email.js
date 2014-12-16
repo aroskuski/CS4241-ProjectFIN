@@ -35,7 +35,7 @@ $(document).ready(function(req, res) {
                     ],
                     'autotext': 'true',
                     'subject': 'Christmas Wishlist!',
-                    'html': 'Email content goes here'
+                    'html': $("#emailText").val()
                 }
             }
         });

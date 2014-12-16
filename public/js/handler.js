@@ -11,7 +11,11 @@ function onStart(){
 }
 
 function printPage(){
-    window.print();
+        var divToPrint=document.getElementById("tableprint");
+        newWin= window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
 }
 
 function emailPage(){

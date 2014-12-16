@@ -109,10 +109,10 @@ exports.additem = function(req, res){
         return;
     }
     // Get the max id currently in use, the new id will be one over it.
-    runQuery("SELECT MAX(id) AS id_max FROM whishlist", res, function(res, result) {
+    runQuery("SELECT MAX(id) AS id_max FROM wishlist", res, function(res, result) {
         console.log(JSON.stringify(result));
         var query = 'INSERT INTO wishlist (id, item, link, price, time_added) VALUES (';
-        var id = parseInt(result[0].id_max + 1);
+        var id = parseInt(result[0].id_max)+1;
         console.log("id=" + id);
         query += id + ", ";
         query += "'" + Client.escape(req.body.item) + "', ";

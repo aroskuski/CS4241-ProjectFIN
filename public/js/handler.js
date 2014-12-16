@@ -13,23 +13,44 @@ function onStart(){
 function printPage(){
         var divToPrint=document.getElementById("tableprint");
         newWin= window.open("");
-        newWin.document.write(divToPrint.outerHTML);
+        var items = "";
+        for(var i = 1; i <= 5; i++){
+            if ($('#item' + i + 'Name').val() != "" && $('#item' + i + 'Link').val() != "" && $('#item' + i + 'Price').val() != "") {
+                var name = $('#item' + i + 'Name').val();
+                var link = $('#item' + i + 'Link').val();
+                var price = $('#item' + i + 'Price').val();
+                items += name + " which costs: $"+price+ " and can be found here: "+link+"<br>";
+            }
+        }
+        newWin.document.write(items);
         newWin.print();
         newWin.close();
 }
 
 function emailPage(){
     document.getElementById("emailDiv").style.visibility = 'visible';
+    var items = "";
+    for(var i = 1; i <= 5; i++){
+        if ($('#item' + i + 'Name').val() != "" && $('#item' + i + 'Link').val() != "" && $('#item' + i + 'Price').val() != "") {
+            var name = $('#item' + i + 'Name').val();
+            var link = $('#item' + i + 'Link').val();
+            var price = $('#item' + i + 'Price').val();
+            items += name + " which costs: $"+price+ " and can be found here: "+link+" ";
+        }
+    }
+
+    $("#emailText").text("Dear Santa, I have been awfully good this year! I cant wait for" +
+    " you to come sliding down my chimney on Christmas Eve! There are a few things I've" +
+    " been wishing for this year which are: " +items+
+    " I will leave you milk and cookies which I hope you enjoy! " +
+    "Thanks again Santa for making all our dreams come true! Merry Christmas!");
 }
 
 $(document).ready(function(req, res) {
     $('#sub').submit(function(evt) {
         evt.preventDefault();
 
-
         submitToDatabase(1);
-
-
 
     });
 });

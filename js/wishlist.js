@@ -71,7 +71,7 @@ function requestJSON(query, res){
 
 }
 
-
+//Wrapper for runquery to return HTML generated from topitems.jade as the response
 function requestHTML(query , res){
     console.log(query);
     runQuery(query, res,  function (res, result){
@@ -89,21 +89,26 @@ function requestHTML(query , res){
     });
 }
 
+//Wrapper for requestJSON, that uses a prebuilt query to get pricing data from the db
 exports.pricedata = function(req, res){
     requestJSON('SELECT item, COUNT(item) AS item_count, DATE(time_added) AS date_added, ' +
     'AVG(price) AS price_avg FROM wishlist ' +
     'GROUP BY item, date_added ORDER BY date_added DESC , item_count DESC;', res);
 };
 
+//Wrapper for requestHTML, that uses a prebuilt query to get the top items.
 exports.topitems = function(req, res){
-    requestHTML('SELECT item, COUNT(item) AS item_count FROM wishlist GROUP BY item ORDER BY item_count DESC;', res);
+    requestJSON('SELECT item, link, COUNT(item) AS item_count FROM wishlist GROUP BY item ORDER BY item_count DESC;', res);
 };
 
+// adds an item with the specified data to the db
 exports.additem = function(req, res){
+    //Error checking
     if((req.body.item == undefined) || (req.body.link == undefined) || (req.body.price == undefined)){
         res.status(400).send();
         return;
     }
+    // Get the max id currently in use, the new id will be one over it.
     runQuery("SELECT MAX(id) AS id_max FROM whishlist", res, function(res, result) {
         console.log(JSON.stringify(result));
         var query = 'INSERT INTO wishlist (id, item, link, price, time_added) VALUES (';
@@ -122,6 +127,7 @@ exports.additem = function(req, res){
     });
 };
 
+// updates the item with the specified id in the db
 exports.modifyitem = function(req, res){
     if((req.body.id == undefined) || (req.body.item == undefined) || (req.body.link == undefined) || (req.body.price == undefined) ){
         res.status(400).send();
@@ -130,7 +136,7 @@ exports.modifyitem = function(req, res){
     var query = 'UPDATE wishlist SET ';
     query += "item='" + Client.escape(req.body.item) + "',";
     query += "link='" + Client.escape(req.body.link) + "',";
-    query += "price=" +req.body.price + ",";
+    query += "price=" + req.body.price + ",";
     query += "time_added=NOW()";
     query += " WHERE id = " + parseInt(req.body.id) + ";";
     res.status(204);

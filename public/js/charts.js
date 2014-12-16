@@ -29,20 +29,15 @@ $(function () {
         $( "#topItem4" ).prepend("1. "+res[3].item);
         $( "#topItem5" ).prepend("1. "+res[4].item);
 
-        $("#topLink1").text(res[0].link);
-        $("#topLink2").text(res[1].link);
-        $("#topLink3").text(res[2].link);
-        $("#topLink4").text(res[3].link);
-        $("#topLink5").text(res[4].link);
-
-        $("#topLink1").attr("href", res[0].link);
-        $("#topLink2").attr("href", res[1].link);
-        $("#topLink3").attr("href", res[2].link);
-        $("#topLink4").attr("href", res[3].link);
-        $("#topLink5").attr("href", res[4].link);
-
-
-
+        for(var i = 0; i < 5; i++){
+            if(res[i].link.indexOf("http://") < 0){
+                $('#topLink'+(i+1)).attr("href", "http://"+res[i].link);
+            }
+            else{
+                $('#topLink'+(i+1)).attr("href", res[i].link);
+            }
+            $('#topLink'+(i+1)).text(res[i].link);
+        }
 
     }})
 

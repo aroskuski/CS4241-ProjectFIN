@@ -96,7 +96,7 @@ exports.pricedata = function(req, res){
 };
 
 exports.topitems = function(req, res){
-    requestHTML('SELECT item, COUNT(item) AS item_count FROM wishlist GROUP BY item ORDER BY item_count DESC;', res);
+    requestJSON('SELECT item, link, COUNT(item) AS item_count FROM wishlist GROUP BY item ORDER BY item_count DESC;', res);
 };
 
 exports.additem = function(req, res){

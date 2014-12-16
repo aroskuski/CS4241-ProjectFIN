@@ -19,6 +19,34 @@ $(function () {
 
     var urlReq = "/pricedata.json";
 
+
+    $.ajax({url:"/topitems.html", success:function(result){
+        var item1,item2,item3,item4,item5;
+        var res = result;
+        $( "#topItem1" ).prepend("1. "+res[0].item);
+        $( "#topItem2" ).prepend("1. "+res[1].item);
+        $( "#topItem3" ).prepend("1. "+res[2].item);
+        $( "#topItem4" ).prepend("1. "+res[3].item);
+        $( "#topItem5" ).prepend("1. "+res[4].item);
+
+        $("#topLink1").text(res[0].link);
+        $("#topLink2").text(res[1].link);
+        $("#topLink3").text(res[2].link);
+        $("#topLink4").text(res[3].link);
+        $("#topLink5").text(res[4].link);
+
+        $("#topLink1").attr("href", res[0].link);
+        $("#topLink2").attr("href", res[1].link);
+        $("#topLink3").attr("href", res[2].link);
+        $("#topLink4").attr("href", res[3].link);
+        $("#topLink5").attr("href", res[4].link);
+
+
+
+
+    }})
+
+
     // JQuery function for performing AJAX to retrieve JSON string
     $.ajax({url:urlReq, success:function(result) {
         response = result;
